@@ -1,0 +1,96 @@
+import { useState, useEffect } from "react";
+import { Menu, X, Cross } from "lucide-react";
+
+const navLinks = [
+  { label: "Início", href: "#inicio" },
+  { label: "Cultos", href: "#cultos" },
+  { label: "Eventos", href: "#eventos" },
+  { label: "Visão", href: "#visao" },
+  { label: "Conheça-nos", href: "#conheca-nos" },
+  { label: "Contribua", href: "#contribua" },
+  { label: "Contato", href: "#contato" },
+];
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleClick = (href: string) => {
+    setIsOpen(false);
+    const el = document.querySelector(href);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-church-dark/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="section-container flex items-center justify-between h-16 md:h-20">
+        {/* Logo */}
+        <a
+          href="#inicio"
+          onClick={(e) => { e.preventDefault(); handleClick("#inicio"); }}
+          className="flex items-center gap-2 text-primary-foreground font-display text-xl font-bold"
+        >
+          <Cross className="h-6 w-6 text-church-gold" />
+          <span>Igreja Evangélica</span>
+        </a>
+
+        {/* Desktop Nav */}
+        <ul className="hidden lg:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
+                className="px-3 py-2 text-sm font-medium text-primary-foreground/80 hover:text-church-gold transition-colors duration-200 rounded-md"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="lg:hidden text-primary-foreground p-2"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="lg:hidden bg-church-dark/98 backdrop-blur-md border-t border-church-medium/30 animate-fade-in">
+          <ul className="section-container py-4 space-y-1">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
+                  className="block px-4 py-3 text-primary-foreground/80 hover:text-church-gold hover:bg-church-medium/20 rounded-md transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
