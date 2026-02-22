@@ -43,7 +43,7 @@ const Navbar = () => {
           className="flex items-center gap-2 text-primary-foreground font-display text-xl font-bold"
         >
           <Cross className="h-6 w-6 text-church-gold" />
-          <span>Igreja Evangélica</span>
+          <span>Identidade Church</span>
         </a>
 
         {/* Desktop Nav */}
