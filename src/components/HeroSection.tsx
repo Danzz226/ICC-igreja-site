@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-church.jpg";
+import heroCulto from "@/assets/hero-culto.png";
 
 const HeroSection = () => {
   const handleVisit = () => {
@@ -9,10 +9,10 @@ const HeroSection = () => {
 
   return (
     <section id="inicio" className="relative h-screen min-h-[600px] overflow-hidden">
-      {/* Image (not as background) */}
+      {/* Image */}
       <img
-        src={heroImage}
-        alt="Interior da igreja com luz dourada"
+        src={heroCulto}
+        alt="Culto da Palavra na Identidade Church"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
@@ -37,7 +37,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight"
         >
-          Igreja Evangélica
+          Identidade Church
           <br />
           <span className="text-church-gold">Mogi das Cruzes</span>
         </motion.h1>
