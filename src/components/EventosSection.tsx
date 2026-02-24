@@ -46,59 +46,82 @@ const eventos = [
   },
 ];
 
-const EventosSection = () => (
-  <section id="eventos" className="section-padding bg-muted">
-    <div className="section-container">
-      <SectionTitle
-        title="Próximos Eventos"
-        subtitle="Fique por dentro das nossas programações especiais"
-      />
+const EventosSection = () => {
+  const hasEventos = eventos.length > 0;
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {eventos.map((evento, i) => (
-          <FadeInView key={evento.titulo} delay={i * 0.1}>
-            <div className="card-church h-full bg-card overflow-hidden p-0 group">
-              {/* Event image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={evento.imagem}
-                  alt={evento.titulo}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
-              </div>
+  return (
+    <section id="eventos" className="section-padding bg-muted">
+      <div className="section-container">
+        <SectionTitle
+          title="Próximos Eventos"
+          subtitle="Fique por dentro das nossas programações especiais"
+        />
 
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-center gap-2 text-church-gold mb-3">
-                  <Calendar className="h-4 w-4" />
-                  <span className="text-sm font-semibold">{evento.data}</span>
+        {hasEventos ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {eventos.map((evento, i) => (
+              <FadeInView key={evento.titulo} delay={i * 0.1}>
+                <div className="card-church h-full bg-card overflow-hidden p-0 group">
+                  {/* Imagem do evento */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={evento.imagem}
+                      alt={evento.titulo}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
+                  </div>
+
+                  {/* Conteúdo */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-church-gold mb-3">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm font-semibold">{evento.data}</span>
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2">
+                      {evento.titulo}
+                    </h3>
+                    <div className="flex items-center gap-2 text-muted-foreground mb-3">
+                      <MapPin className="h-4 w-4" />
+                      <span className="text-sm">{evento.local}</span>
+                    </div>
+                    <p className="text-muted-foreground text-sm mb-4">{evento.descricao}</p>
+
+                    {/* Link futuro de inscrição */}
+                    <button
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-church-gold hover:underline transition-colors"
+                      disabled
+                    >
+                      Em breve: Inscreva-se
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                  {evento.titulo}
-                </h3>
-                <div className="flex items-center gap-2 text-muted-foreground mb-3">
-                  <MapPin className="h-4 w-4" />
-                  <span className="text-sm">{evento.local}</span>
-                </div>
-                <p className="text-muted-foreground text-sm mb-4">{evento.descricao}</p>
-
-                {/* Future inscription link placeholder */}
-                <button
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-church-gold hover:underline transition-colors"
-                  disabled
-                >
-                  Em breve: Inscreva-se
-                  <ArrowRight className="h-4 w-4" />
-                </button>
+              </FadeInView>
+            ))}
+          </div>
+        ) : (
+          /* Estado vazio – exibido quando não há eventos */
+          <FadeInView>
+            <div className="max-w-lg mx-auto text-center py-16">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: "hsl(var(--church-blue-dark))" }}
+              >
+                <Calendar className="h-9 w-9 text-church-gold" />
               </div>
+              <h3 className="font-display text-2xl font-bold text-foreground mb-3">
+                Em breve novos eventos
+              </h3>
+              <p className="text-muted-foreground text-lg">
+                Estamos preparando programações especiais para você e sua família. Fique atento às nossas redes sociais!
+              </p>
             </div>
           </FadeInView>
-        ))}
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default EventosSection;
