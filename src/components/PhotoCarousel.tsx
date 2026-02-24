@@ -71,68 +71,73 @@ const PhotoCarousel = () => {
           >
             {/* Carousel viewport */}
             <div className="flex items-center justify-center gap-4 md:gap-6 py-4">
-              {/* Left image (partially visible) */}
+              {/* Imagem esquerda (parcialmente visível) */}
               <div className="hidden md:block w-1/4 flex-shrink-0 overflow-hidden">
                 <img
                   src={photos[getIndex(-1)].src}
                   alt={photos[getIndex(-1)].alt}
-                  className="w-full aspect-[4/3] object-cover rounded-xl opacity-50 scale-90 blur-[1px] transition-all duration-500"
+                  className="w-full aspect-[4/3] object-cover rounded-xl opacity-40 scale-90 blur-[2px] transition-all duration-500"
                 />
               </div>
 
-              {/* Center image (fully visible, larger) */}
+              {/* Imagem central (totalmente visível, zoom no hover) */}
               <div className="w-full md:w-1/2 flex-shrink-0">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={current}
                     src={photos[current].src}
                     alt={photos[current].alt}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="w-full aspect-[4/3] object-cover rounded-2xl shadow-2xl"
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1.02 }}
+                    exit={{ opacity: 0, scale: 0.92 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="w-full aspect-[4/3] object-cover rounded-2xl"
+                    style={{ boxShadow: "0 20px 50px -12px hsla(var(--church-blue-dark), 0.4)" }}
                   />
                 </AnimatePresence>
               </div>
 
-              {/* Right image (partially visible) */}
+              {/* Imagem direita (parcialmente visível) */}
               <div className="hidden md:block w-1/4 flex-shrink-0 overflow-hidden">
                 <img
                   src={photos[getIndex(1)].src}
                   alt={photos[getIndex(1)].alt}
-                  className="w-full aspect-[4/3] object-cover rounded-xl opacity-50 scale-90 blur-[1px] transition-all duration-500"
+                  className="w-full aspect-[4/3] object-cover rounded-xl opacity-40 scale-90 blur-[2px] transition-all duration-500"
                 />
               </div>
             </div>
 
-            {/* Navigation buttons */}
+            {/* Botões de navegação */}
             <button
               onClick={prev}
-              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-church-dark/80 backdrop-blur-sm flex items-center justify-center text-church-gold hover:bg-church-medium transition-colors shadow-lg z-10"
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full backdrop-blur-sm flex items-center justify-center text-church-gold transition-all duration-200 shadow-lg z-10 hover:scale-110"
+              style={{ backgroundColor: "hsl(var(--church-blue-dark) / 0.8)" }}
               aria-label="Anterior"
             >
               <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
             </button>
             <button
               onClick={next}
-              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-church-dark/80 backdrop-blur-sm flex items-center justify-center text-church-gold hover:bg-church-medium transition-colors shadow-lg z-10"
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full backdrop-blur-sm flex items-center justify-center text-church-gold transition-all duration-200 shadow-lg z-10 hover:scale-110"
+              style={{ backgroundColor: "hsl(var(--church-blue-dark) / 0.8)" }}
               aria-label="Próximo"
             >
               <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
             </button>
 
-            {/* Indicators */}
-            <div className="flex justify-center gap-2 mt-6">
+            {/* Indicadores minimalistas dourados */}
+            <div className="flex justify-center gap-2 mt-8">
               {photos.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    i === current
-                      ? "bg-church-gold w-8"
-                      : "bg-border w-3 hover:bg-muted-foreground"
-                  }`}
+                  className="h-2 rounded-full transition-all duration-300"
+                  style={{
+                    width: i === current ? "2rem" : "0.5rem",
+                    backgroundColor: i === current
+                      ? "hsl(var(--church-gold))"
+                      : "hsl(var(--border))",
+                  }}
                   aria-label={`Foto ${i + 1}`}
                 />
               ))}

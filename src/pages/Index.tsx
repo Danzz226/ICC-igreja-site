@@ -11,14 +11,31 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <main className="min-h-screen">
+      {/* ===== Navegação fixa ===== */}
       <Navbar />
+
+      {/* ===== Hero Section ===== */}
       <HeroSection />
+
+      {/* ===== Seção: Nossos Cultos ===== */}
       <CultosSection />
+
+      {/* ===== Seção: Próximos Eventos ===== */}
       <EventosSection />
+
+      {/* ===== Seção: Visão da Igreja ===== */}
       <VisaoSection />
+
+      {/* ===== Seção: Galeria de Fotos ===== */}
       <PhotoCarousel />
+
+      {/* ===== Seção: Conheça-nos ===== */}
       <ConhecaNosSection />
+
+      {/* ===== Seção: Contribua ===== */}
       <ContribuaSection />
+
+      {/* ===== Rodapé / Contato ===== */}
       <Footer />
     </main>
   );

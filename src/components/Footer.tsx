@@ -1,9 +1,9 @@
-import { Mail, Phone, Instagram, Youtube, MapPin, Cross } from "lucide-react";
+import { Mail, Phone, Instagram, Youtube, MapPin, Cross, Clock } from "lucide-react";
 
 const Footer = () => (
   <footer id="contato" className="bg-church-dark section-padding pb-8">
     <div className="section-container">
-      <div className="grid md:grid-cols-3 gap-10 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         {/* Coluna 1: Contato */}
         <div>
           <div className="flex items-center gap-2 mb-6">
@@ -32,7 +32,27 @@ const Footer = () => (
           </div>
         </div>
 
-        {/* Coluna 2: Redes Sociais */}
+        {/* Coluna 2: Horários dos Cultos */}
+        <div>
+          <div className="flex items-center gap-2 mb-6">
+            <Clock className="h-5 w-5 text-church-gold" />
+            <h3 className="font-display text-xl font-bold text-primary-foreground">
+              Horários
+            </h3>
+          </div>
+          <div className="space-y-4">
+            <div className="text-primary-foreground/70">
+              <p className="font-semibold text-primary-foreground/90">Quinta-feira</p>
+              <p>Culto da Palavra – 19:30h</p>
+            </div>
+            <div className="text-primary-foreground/70">
+              <p className="font-semibold text-primary-foreground/90">Domingo</p>
+              <p>Culto da Família – 10:00h</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Coluna 3: Redes Sociais */}
         <div>
           <h3 className="font-display text-xl font-bold text-primary-foreground mb-6">
             Redes Sociais
@@ -59,7 +79,7 @@ const Footer = () => (
           </div>
         </div>
 
-        {/* Coluna 3: Mapa */}
+        {/* Coluna 4: Mapa */}
         <div>
           <h3 className="font-display text-xl font-bold text-primary-foreground mb-6">
             Localização
@@ -85,10 +105,10 @@ const Footer = () => (
         </div>
       </div>
 
-      {/* Bottom bar */}
+      {/* Barra inferior */}
       <div className="border-t border-church-medium/30 pt-8 text-center">
         <p className="text-primary-foreground/50 text-sm">
-          © {new Date().getFullYear()} Igreja Evangélica – Mogi das Cruzes. Todos os
+          © {new Date().getFullYear()} Identidade Church – Mogi das Cruzes. Todos os
           direitos reservados.
         </p>
       </div>
