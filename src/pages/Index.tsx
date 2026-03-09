@@ -1,12 +1,16 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import CultosSection from "@/components/CultosSection";
-import EventosSection from "@/components/EventosSection";
-import VisaoSection from "@/components/VisaoSection";
-import PhotoCarousel from "@/components/PhotoCarousel";
-import ConhecaNosSection from "@/components/ConhecaNosSection";
-import ContribuaSection from "@/components/ContribuaSection";
-import Footer from "@/components/Footer";
+
+const CultosSection = lazy(() => import("@/components/CultosSection"));
+const EventosSection = lazy(() => import("@/components/EventosSection"));
+const VisaoSection = lazy(() => import("@/components/VisaoSection"));
+const DevocionalSection = lazy(() => import("@/components/DevocionalSection"));
+const PhotoCarousel = lazy(() => import("@/components/PhotoCarousel"));
+const ConhecaNosSection = lazy(() => import("@/components/ConhecaNosSection"));
+const PrayerRequestSection = lazy(() => import("@/components/PrayerRequestSection"));
+const ContribuaSection = lazy(() => import("@/components/ContribuaSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   return (
@@ -17,26 +21,18 @@ const Index = () => {
       {/* ===== Hero Section ===== */}
       <HeroSection />
 
-      {/* ===== Seção: Nossos Cultos ===== */}
-      <CultosSection />
-
-      {/* ===== Seção: Próximos Eventos ===== */}
-      <EventosSection />
-
-      {/* ===== Seção: Visão da Igreja ===== */}
-      <VisaoSection />
-
-      {/* ===== Seção: Galeria de Fotos ===== */}
-      <PhotoCarousel />
-
-      {/* ===== Seção: Conheça-nos ===== */}
-      <ConhecaNosSection />
-
-      {/* ===== Seção: Contribua ===== */}
-      <ContribuaSection />
-
-      {/* ===== Rodapé / Contato ===== */}
-      <Footer />
+      {/* ===== Seções Lazy Loaded ===== */}
+      <Suspense fallback={<div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-church-gold/30 border-t-church-gold rounded-full animate-spin"></div></div>}>
+        <CultosSection />
+        <EventosSection />
+        <DevocionalSection />
+        <VisaoSection />
+        <PhotoCarousel />
+        <ConhecaNosSection />
+        <PrayerRequestSection />
+        <ContribuaSection />
+        <Footer />
+      </Suspense>
     </main>
   );
 };

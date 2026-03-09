@@ -4,22 +4,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import FadeInView from "./FadeInView";
 import SectionTitle from "./SectionTitle";
 
-import eventoConferencia from "@/assets/evento-conferencia.jpg";
-import eventoRetiro from "@/assets/evento-retiro.jpg";
-import eventoBazar from "@/assets/evento-bazar.jpg";
-import eventoFamilia from "@/assets/evento-familia.jpg";
-import eventoLouvor from "@/assets/evento-louvor.jpg";
-import igrejaFisica from "@/assets/igreja-fisica.png";
-import agendaSemanal from "@/assets/agenda-semanal.png";
+import carroselCulto from "@/assets/carrosel-culto.jpg";
+import carroselCultoDomingo from "@/assets/carrosel-culto-domingo.jpg";
+import carroselJovens from "@/assets/carrosel-jovens.jpg";
+import carroselPastor from "@/assets/carrosel-pastor.jpg";
+import carroselPastora from "@/assets/carrosel-pastora.jpg";
 
 const photos = [
-  { src: agendaSemanal, alt: "Agenda Semanal da Identidade Church" },
-  { src: eventoConferencia, alt: "Conferência de Jovens" },
-  { src: igrejaFisica, alt: "Igreja Identidade Church - Mogi das Cruzes" },
-  { src: eventoRetiro, alt: "Retiro Espiritual" },
-  { src: eventoBazar, alt: "Bazar Beneficente" },
-  { src: eventoFamilia, alt: "Encontro de Famílias" },
-  { src: eventoLouvor, alt: "Noite de Louvor" },
+  { src: carroselCulto, alt: "Culto Identidade Church" },
+  { src: carroselCultoDomingo, alt: "Culto de Domingo" },
+  { src: carroselJovens, alt: "Jovens Identidade Church" },
+  { src: carroselPastor, alt: "Pastor Identidade Church" },
+  { src: carroselPastora, alt: "Pastora Identidade Church" },
 ];
 
 const PhotoCarousel = () => {
@@ -35,7 +31,7 @@ const PhotoCarousel = () => {
 
   useEffect(() => {
     if (paused) return;
-    const timer = setInterval(next, 4000);
+    const timer = setInterval(next, 2500);
     return () => clearInterval(timer);
   }, [paused, next]);
 
@@ -77,6 +73,7 @@ const PhotoCarousel = () => {
                   src={photos[getIndex(-1)].src}
                   alt={photos[getIndex(-1)].alt}
                   className="w-full aspect-[4/3] object-cover rounded-xl opacity-40 scale-90 blur-[2px] transition-all duration-500"
+                  loading="lazy"
                 />
               </div>
 
@@ -103,6 +100,7 @@ const PhotoCarousel = () => {
                   src={photos[getIndex(1)].src}
                   alt={photos[getIndex(1)].alt}
                   className="w-full aspect-[4/3] object-cover rounded-xl opacity-40 scale-90 blur-[2px] transition-all duration-500"
+                  loading="lazy"
                 />
               </div>
             </div>

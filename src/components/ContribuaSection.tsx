@@ -54,10 +54,7 @@ const ContribuaSection = () => (
                 🏦 Dados Bancários
               </p>
               <p className="text-sm text-muted-foreground">
-                PIX: contato@igrejamc.com.br
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Banco: XXX | Ag: XXXX | CC: XXXXX-X
+                Chave PIX: 56173005000170
               </p>
             </div>
           </div>

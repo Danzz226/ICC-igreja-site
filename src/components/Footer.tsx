@@ -20,7 +20,7 @@ const Footer = () => (
               <Mail className="h-5 w-5 text-church-gold" />
               <span>contato@igrejamc.com.br</span>
             </a>
-            <a
+            {/* <a
               href="https://wa.me/5511999999999"
               target="_blank"
               rel="noopener noreferrer"
@@ -28,7 +28,7 @@ const Footer = () => (
             >
               <Phone className="h-5 w-5 text-church-gold" />
               <span>(11) 99999-9999</span>
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -46,8 +46,16 @@ const Footer = () => (
               <p>Culto da Palavra – 19:30h</p>
             </div>
             <div className="text-primary-foreground/70">
+              <p className="font-semibold text-church-gold">Última Quinta (Especial)</p>
+              <p>Culto de Comunhão – 19:30h</p>
+            </div>
+            <div className="text-primary-foreground/70 mt-4">
               <p className="font-semibold text-primary-foreground/90">Domingo</p>
               <p>Culto da Família – 10:00h</p>
+            </div>
+            <div className="text-primary-foreground/70">
+              <p className="font-semibold text-church-gold">2º Domingo (Especial)</p>
+              <p>Santa Ceia – 10:00h</p>
             </div>
           </div>
         </div>
@@ -59,22 +67,22 @@ const Footer = () => (
           </h3>
           <div className="space-y-4">
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/iccmogi"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-primary-foreground/70 hover:text-church-gold transition-colors"
             >
               <Instagram className="h-5 w-5 text-church-gold" />
-              <span>@igrejamc</span>
+              <span>@iccmogi</span>
             </a>
             <a
-              href="https://youtube.com/"
+              href="https://www.youtube.com/@identidadeemcristochurchmogi"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-primary-foreground/70 hover:text-church-gold transition-colors"
             >
               <Youtube className="h-5 w-5 text-church-gold" />
-              <span>Igreja Evangélica MC</span>
+              <span>Identidade Church Mogi</span>
             </a>
           </div>
         </div>
