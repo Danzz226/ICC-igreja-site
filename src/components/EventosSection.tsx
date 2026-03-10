@@ -9,10 +9,12 @@ import { Input } from "./ui/input";
 import eventoConsagracao from "@/assets/evento-consagracao-mulheres.jpg";
 import eventoCultoMulheres from "@/assets/eento-culto-mulheres.jpg";
 
+// dataFim: quando o evento termina (ISO). Eventos passados somem automaticamente do site.
 const eventos = [
   {
     titulo: "Consagração de Mulheres",
     data: "7 de Março, 2026 às 08:00h",
+    dataFim: "2026-03-07T08:00:00", // após esse momento o evento some
     local: "Templo Principal",
     descricao: "Momento especial de busca e consagração ao Senhor exclusivo para mulheres.",
     imagem: eventoConsagracao,
@@ -20,14 +22,17 @@ const eventos = [
   {
     titulo: "Culto de Mulheres",
     data: "28 de Março, 2026 às 19:30h",
+    dataFim: "2026-03-28T19:30:00",
     local: "Templo Principal",
     descricao: "Um culto abençoado e direcionado para o Ministério de Mulheres.",
     imagem: eventoCultoMulheres,
   },
 ];
 
+
 const EventosSection = () => {
-  const hasEventos = eventos.length > 0;
+  const eventosVisiveis = eventos.filter((e) => new Date(e.dataFim) > new Date());
+  const hasEventos = eventosVisiveis.length > 0;
   const [nome, setNome] = useState("");
   const whatsappNumber = "5511960782534";
 
@@ -49,7 +54,7 @@ const EventosSection = () => {
 
         {hasEventos ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {eventos.map((evento, i) => (
+            {eventosVisiveis.map((evento, i) => (
               <FadeInView key={evento.titulo} delay={i * 0.1}>
                 <div className="card-church h-full bg-card overflow-hidden p-0 group">
                   {/* Imagem do evento */}

@@ -94,22 +94,30 @@ const Footer = () => (
           </h3>
           <div className="rounded-lg overflow-hidden mb-4 border border-church-medium/30">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.5!2d-46.19!3d-23.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMxJzEyLjAiUyA0NsKwMTEnMjQuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.792234!2d-46.188!3d-23.523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef5e2b3e0b0b1%3A0x0!2zMjPCsDMxJzIyLjgiUyA0NsKwMTEnMTYuOCJX!5e0!3m2!1spt-BR!2sbr!4v1635000000000"
               width="100%"
-              height="180"
+              height="220"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localização da Igreja"
+              title="Localização da Identidade Church – Mogi das Cruzes"
             />
           </div>
-          <div className="flex items-start gap-2 text-primary-foreground/70">
-            <MapPin className="h-5 w-5 text-church-gold flex-shrink-0 mt-0.5" />
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Rua+Jardelina+de+A.+Lopes+798+Parque+Santana+Mogi+das+Cruzes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-2 text-primary-foreground/70 hover:text-church-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-church-gold focus-visible:ring-offset-2 focus-visible:ring-offset-church-dark rounded"
+          >
+            <MapPin className="h-5 w-5 text-church-gold flex-shrink-0 mt-0.5" aria-hidden />
             <span className="text-sm">
-              Jardelina de A. Lopes, 798 – Pq Santana – Mogi das Cruzes
+              R. Jardelina de A. Lopes, 798 – Pq Santana – Mogi das Cruzes
             </span>
-          </div>
+          </a>
+          <p className="text-primary-foreground/50 text-xs mt-2">
+            Clique para abrir no Google Maps
+          </p>
         </div>
       </div>
 

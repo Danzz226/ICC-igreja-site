@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
 import CookieConsent from "./components/CookieConsent";
+import WhatsAppFloating from "./components/WhatsAppFloating";
 
 const Galeria = lazy(() => import("./pages/Galeria"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -18,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <CookieConsent />
+      <WhatsAppFloating />
       <BrowserRouter>
         <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-background"><div className="w-10 h-10 border-4 border-church-gold/30 border-t-church-gold rounded-full animate-spin"></div></div>}>
           <Routes>

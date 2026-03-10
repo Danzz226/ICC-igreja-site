@@ -107,7 +107,7 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-32;
   }
 
   .gold-separator {
@@ -153,6 +153,12 @@
   .text-church-red {
     color: hsl(var(--church-red));
   }
+}
+
+/* Acessibilidade: foco visível com cor da igreja */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--church-gold));
 }
 
 /* Smooth scroll */

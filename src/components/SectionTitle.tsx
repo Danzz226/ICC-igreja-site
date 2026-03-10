@@ -9,7 +9,7 @@ interface SectionTitleProps {
 const SectionTitle = ({ title, subtitle, light = false }: SectionTitleProps) => (
   <FadeInView className="text-center mb-12 md:mb-16">
     <h2
-      className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${
+      className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${
         light ? "text-primary-foreground" : "text-foreground"
       }`}
     >

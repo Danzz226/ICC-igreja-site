@@ -1,25 +1,32 @@
 import { motion } from "framer-motion";
+import { MapPin, Play } from "lucide-react";
 import heroCulto from "@/assets/hero-culto.png";
+
+const YOUTUBE_CHANNEL = "https://www.youtube.com/@identidadeemcristochurchmogi";
 
 const HeroSection = () => {
   const handleVisit = () => {
-    const el = document.querySelector("#contato");
-    el?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section id="inicio" className="relative h-screen min-h-[600px] overflow-hidden">
-      {/* Image */}
+      {/* Imagem de fundo: no mobile foca no pastor (lado direito da foto horizontal) */}
       <img
         src={heroCulto}
-        alt="Culto da Palavra na Identidade Church"
-        className="absolute inset-0 w-full h-full object-cover"
+        alt="Culto na Identidade Church em Mogi das Cruzes"
+        className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-church-dark/70 via-church-dark/50 to-church-dark/80" />
+      {/* Overlay escuro para contraste e legibilidade */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)), linear-gradient(to bottom, rgba(30,42,56,0.75), rgba(30,42,56,0.5), rgba(30,42,56,0.8))",
+        }}
+      />
 
-      {/* Content */}
+      {/* Conteúdo */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,7 +42,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight"
+          className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight"
         >
           Identidade Church
           <br />
@@ -45,20 +52,44 @@ const HeroSection = () => {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mb-10 font-light"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-white/95 text-lg md:text-xl max-w-2xl mb-2 font-medium"
         >
-          Um lugar de fé, acolhimento e transformação através da Palavra de Deus
+          Uma igreja para você e sua família em Mogi das Cruzes
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-white/80 text-sm md:text-base max-w-xl mb-8 font-light"
+        >
+          Domingo 10h · Quinta 19h30
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
         >
-          <button onClick={handleVisit} className="btn-hero text-lg">
-            Venha nos visitar
+          <button
+            onClick={handleVisit}
+            className="btn-hero text-lg inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-church-gold focus-visible:ring-offset-2 focus-visible:ring-offset-church-dark"
+            aria-label="Ver localização e visitar a igreja"
+          >
+            <MapPin className="h-5 w-5" />
+            Visitar a igreja
           </button>
+          <a
+            href={YOUTUBE_CHANNEL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-md px-8 py-3 text-lg font-semibold transition-all duration-300 border-2 border-white/90 text-white hover:bg-white/10 hover:border-church-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-church-gold focus-visible:ring-offset-2 focus-visible:ring-offset-church-dark"
+            aria-label="Assistir culto no YouTube"
+          >
+            <Play className="h-5 w-5" />
+            Assistir culto
+          </a>
         </motion.div>
       </div>
 

@@ -6,7 +6,6 @@ const CultosSection = lazy(() => import("@/components/CultosSection"));
 const EventosSection = lazy(() => import("@/components/EventosSection"));
 const VisaoSection = lazy(() => import("@/components/VisaoSection"));
 const DevocionalSection = lazy(() => import("@/components/DevocionalSection"));
-const PhotoCarousel = lazy(() => import("@/components/PhotoCarousel"));
 const ConhecaNosSection = lazy(() => import("@/components/ConhecaNosSection"));
 const PrayerRequestSection = lazy(() => import("@/components/PrayerRequestSection"));
 const ContribuaSection = lazy(() => import("@/components/ContribuaSection"));
@@ -27,7 +26,6 @@ const Index = () => {
         <EventosSection />
         <DevocionalSection />
         <VisaoSection />
-        <PhotoCarousel />
         <ConhecaNosSection />
         <PrayerRequestSection />
         <ContribuaSection />
